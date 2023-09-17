@@ -1,0 +1,56 @@
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
+
+namespace trymod.Items
+{
+	public class CrimsonKatan : ModItem
+	{
+		// The Display Name and Tooltip of this item can be edited in the Localization/en-US_Mods.trymod.hjson file.
+
+		public override void SetDefaults()
+		{
+			Item.damage = 35;
+			Item.DamageType = DamageClass.Melee;
+			Item.width = 40;
+			Item.height = 40;
+			Item.useTime = 15;
+			Item.useAnimation = 15;
+			Item.useStyle = 1;
+			Item.knockBack = 0;
+			Item.value = 10000;
+			Item.rare = 2;
+			Item.UseSound = SoundID.Item1;
+			Item.autoReuse = true;
+		}
+
+		public override void MeleeEffects(Player player, Rectangle hitbox)
+		{
+			if (Main.rand.NextBool(1))
+			{
+				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y),hitbox.Width, hitbox.Height,DustID.Blood,0, 0,75);
+			}
+		}
+
+		public override void AddRecipes()
+		{
+			Recipe recipe = CreateRecipe();
+			recipe.AddIngredient(ItemID.CrimtaneBar, 10);
+			recipe.AddRecipeGroup("IronBar", 5);
+			recipe.AddTile(TileID.Anvils);
+			Recipe recipe2 = CreateRecipe();
+			recipe2.AddIngredient(ItemID.DemoniteBar, 10);
+			recipe2.AddRecipeGroup("IronBar", 5);
+			recipe2.AddTile(TileID.Anvils);
+			recipe2.Register();
+		}
+		public override void Dash(Player player)
+        {
+            if ()
+            {
+
+            }
+        }
+	}
+}
